@@ -1,0 +1,14 @@
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\AppConfiguration.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\Dto\UserDto.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Role.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\Repository\UserRepository.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\BaseEntity.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\UserMapper.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Status.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\User.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\RestaurantVoteApplication.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\Repository\RoleRepository.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\AuthentificationRestController.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\RegistrationRestController.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\AdminRestController.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\Service\UserService.java

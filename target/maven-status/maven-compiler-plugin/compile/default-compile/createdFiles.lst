@@ -1,0 +1,14 @@
+restaurantVote\model\Role.class
+restaurantVote\rest\RegistrationRestController.class
+restaurantVote\model\BaseEntity.class
+restaurantVote\Dto\UserDto.class
+restaurantVote\model\Status.class
+restaurantVote\conf\AppConfiguration.class
+restaurantVote\mapper\UserMapper.class
+restaurantVote\Repository\UserRepository.class
+restaurantVote\rest\AdminRestController.class
+restaurantVote\RestaurantVoteApplication.class
+restaurantVote\Service\UserService.class
+restaurantVote\rest\AuthentificationRestController.class
+restaurantVote\Repository\RoleRepository.class
+restaurantVote\model\User.class
