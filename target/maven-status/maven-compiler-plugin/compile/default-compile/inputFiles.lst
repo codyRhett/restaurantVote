@@ -1,4 +1,5 @@
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\Service\VoteService.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\VoteController.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\AppConfiguration.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\Repository\UserRepository.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\Service\RestaurantService.java
@@ -21,5 +22,4 @@ C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Restaurant.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\BaseEntity.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\UserMapper.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\Dto\VoteDto.java
-C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\VoteRestController.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\Dto\RestaurantDto.java

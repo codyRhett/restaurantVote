@@ -1,21 +1,12 @@
 package restaurantVote.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import restaurantVote.Dto.UserDto;
-import restaurantVote.Dto.VoteDto;
 import restaurantVote.model.Status;
 import restaurantVote.model.User;
-import restaurantVote.model.Vote;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class UserMapper {
-
-    @Autowired
-    private VoteMapper voteMapper;
 
     public User fromDto(UserDto userDto) {
         User user = new User();
@@ -24,12 +15,6 @@ public class UserMapper {
         user.setLastname(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setId(userDto.getId());
-
-        if (userDto.getVotes() != null) {
-            List<Vote> listVotes = userDto.getVotes().stream()
-                    .map(voteMapper::fromDto).collect(Collectors.toList());
-            user.setVotes(listVotes);
-        }
 
         if (userDto.getStatus() != null) {
             user.setStatus(userDto.getStatus());
@@ -50,12 +35,6 @@ public class UserMapper {
         userDto.setLastName(user.getLastname());
         userDto.setEmail(user.getEmail());
         userDto.setId(user.getId());
-
-        if (user.getVotes() != null) {
-            List<VoteDto> listVotes = user.getVotes().stream()
-                    .map(voteMapper::toDto).collect(Collectors.toList());
-            userDto.setVotes(listVotes);
-        }
 
         if (user.getStatus() != null) {
             userDto.setStatus(String.valueOf(user.getStatus()));

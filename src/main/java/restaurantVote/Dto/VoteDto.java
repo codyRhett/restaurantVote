@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class VoteDto {
+
     private Long id;
 
     @NotNull
@@ -18,5 +19,5 @@ public class VoteDto {
     private Long rating;
 
     @NotNull
-    private UserDto user;
+    private Long userId;
 }

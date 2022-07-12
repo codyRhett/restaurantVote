@@ -14,7 +14,7 @@ restaurantVote\mapper\VoteMapper.class
 restaurantVote\Repository\RestaurantRepository.class
 restaurantVote\Repository\RoleRepository.class
 restaurantVote\model\User.class
-restaurantVote\rest\VoteRestController.class
+restaurantVote\rest\VoteController.class
 restaurantVote\Dto\RestaurantDto.class
 restaurantVote\Dto\VoteDto.class
 restaurantVote\rest\RegistrationRestController.class

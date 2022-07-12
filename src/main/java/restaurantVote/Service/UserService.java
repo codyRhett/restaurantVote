@@ -32,6 +32,10 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public User findByUserName(String userName) {
+        return userRepository.findByUserName(userName).orElseThrow();
+    }
+
     public User register(User user) {
         if (userRepository.findByUserName(user.getUsername()).isPresent()) {
             throw new EntityExistsException("Entity with userName: " + user.getUsername() + " already exists");

@@ -26,7 +26,24 @@ public class Vote {
     @Column(name = "rating")
     private Long rating;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Override
+    public String toString() {
+        String userId;
+        if (user == null) {
+            userId = "null";
+        } else {
+            userId = user.getId().toString();
+        }
+        return "Vote{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", restaurant='" + restaurant + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", rating=" + rating +
+                '}';
+    }
 }
