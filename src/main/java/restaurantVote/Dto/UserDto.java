@@ -3,6 +3,7 @@ package restaurantVote.Dto;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class UserDto {
@@ -22,6 +23,8 @@ public class UserDto {
 
     @NotNull
     private String email;
+
+    private List<VoteDto> votes;
 
     private String status;
 }

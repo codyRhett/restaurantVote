@@ -10,4 +10,12 @@
         <sqlFile dbms="postgresql" path="update/db.1.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="20220420-2" author="artemryvkin@yandex.ru">
+        <sqlFile dbms="postgresql" path="update/db.2.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="20220420-3" author="artemryvkin@yandex.ru">
+        <sqlFile dbms="postgresql" path="update/db.3.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

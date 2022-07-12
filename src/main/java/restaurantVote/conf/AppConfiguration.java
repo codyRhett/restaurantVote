@@ -18,6 +18,7 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN_ENDPOINT = "/api/admin/**";
     private static final String REGISTER_ENDPOINT = "/api/registration/**";
+    private static final String RESTAURANT_ENDPOINT = "/api/restaurant/**";
 
     @Autowired
     @Lazy
@@ -36,6 +37,7 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .antMatchers(REGISTER_ENDPOINT).not().fullyAuthenticated()
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
+                .antMatchers(RESTAURANT_ENDPOINT).authenticated()
                 .and().httpBasic();
     }
 

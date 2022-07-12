@@ -36,6 +36,9 @@ public class User implements UserDetails {
     @Column(name = "status")
     private String status;
 
+    @OneToMany(mappedBy = "user")
+    private List<Vote> votes;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

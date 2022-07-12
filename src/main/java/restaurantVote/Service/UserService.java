@@ -12,6 +12,8 @@ import restaurantVote.model.Role;
 import restaurantVote.model.Status;
 import restaurantVote.model.User;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +33,10 @@ public class UserService implements UserDetailsService {
     }
 
     public User register(User user) {
+        if (userRepository.findByUserName(user.getUsername()).isPresent()) {
+            throw new EntityExistsException("Entity with userName: " + user.getUsername() + " already exists");
+        }
+
         Role roleUser = roleRepository.findByName("ROLE_USER");
         List<Role> roles = new ArrayList<>();
         roles.add(roleUser);
@@ -56,8 +62,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username);
-
+        User user = userRepository.findByUserName(username).orElseThrow(() -> new EntityNotFoundException("Entity with userName " + username + " not found"));
         return user;
     }
 }

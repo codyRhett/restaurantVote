@@ -1,5 +1,6 @@
 package restaurantVote.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class AdminRestController {
     private final UserService userService;
     private final UserMapper userMapper;
 
+    @Autowired
     public AdminRestController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
         this.userMapper = userMapper;
