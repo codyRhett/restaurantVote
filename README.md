@@ -1,10 +1,12 @@
 # restaurantVote
 Voting System for restaurants
 
+Service is developed using Spring Boot, Spring MVC, Spring Security, Spring Data, Liquibase, Hibernate
+
 Backend for Voting System for the best Restaurant
 
 Functionality
-1. User can be authentiphicated using endpoint - http://localhost:8080/api/registration/user with example body:
+User can be authentiphicated using endpoint - http://localhost:8080/api/registration/user with example body:
 {
     "username":"cody",
     "firstName":"artem1",
@@ -16,6 +18,7 @@ Functionality
 Password will be encrypted and only user with ADMIN role has an access to get list of all users and delete users
 
 Endpoint to get All Users - http://localhost:8080/api/admin/users
+Endpoint to delete Users - http://localhost:8080/api/admin/user/delete/22
 
 Also User can register new Restaurant, but this user must be authentiphicated
 
@@ -32,3 +35,4 @@ Vote Endpoint: http://localhost:8080/api/vote/save with example body
     "userId": 22
 }
 
+User can get all the Restaurants sorted by Name: http://localhost:8080/api/restaurant/list?sort=name,ASC
