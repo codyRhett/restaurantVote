@@ -1,11 +1,13 @@
 package restaurantVote.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "votes")
 public class Vote {
@@ -16,7 +18,7 @@ public class Vote {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
 
@@ -26,24 +28,10 @@ public class Vote {
     @Column(name = "rating")
     private Long rating;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Override
-    public String toString() {
-        String userId;
-        if (user == null) {
-            userId = "null";
-        } else {
-            userId = user.getId().toString();
-        }
-        return "Vote{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", restaurant='" + restaurant + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", rating=" + rating +
-                '}';
-    }
+    @Column(name = "comment")
+    private String comment;
 }

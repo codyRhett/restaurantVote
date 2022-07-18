@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import restaurantVote.Dto.UserDto;
-import restaurantVote.Service.UserService;
+import restaurantVote.dto.UserDto;
+import restaurantVote.service.UserService;
 import restaurantVote.mapper.UserMapper;
 import restaurantVote.model.User;
 

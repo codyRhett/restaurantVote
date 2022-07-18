@@ -27,8 +27,8 @@ create table if not exists roles
 --(1, 'ROLE_ADMIN'),
 --(2, 'ROLE_USER');
 
-INSERT INTO users(id, user_name, first_name, last_name, email, password) VALUES
-(1, 'admin', 'admin', 'admin', 'admin@yandex.ru', '$2a$12$c6QmI2pHr560Km6Pn5rpUeNji/GMLtztb7h4BInqbX/ovSlgqLD9m');
+--INSERT INTO users(id, user_name, first_name, last_name, email, password) VALUES
+--(1, 'admin', 'admin', 'admin', 'admin@yandex.ru', '$2a$12$c6QmI2pHr560Km6Pn5rpUeNji/GMLtztb7h4BInqbX/ovSlgqLD9m');
 
 create table if not exists user_roles
 (

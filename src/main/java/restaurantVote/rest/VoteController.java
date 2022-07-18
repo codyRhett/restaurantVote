@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import restaurantVote.Dto.VoteDto;
-import restaurantVote.Service.VoteService;
+import restaurantVote.dto.VoteDto;
 import restaurantVote.mapper.VoteMapper;
 import restaurantVote.model.Vote;
+import restaurantVote.service.RestaurantService;
+import restaurantVote.service.RestaurantVoteService;
+import restaurantVote.service.VoteService;
 
 import javax.validation.Valid;
 import javax.validation.ValidationException;
@@ -22,10 +24,14 @@ public class VoteController {
 
     private final VoteMapper voteMapper;
     private final VoteService voteService;
+    private final RestaurantService restaurantService;
+    private final RestaurantVoteService restaurantVoteService;
 
-    public VoteController(VoteMapper voteMapper, VoteService voteService) {
+    public VoteController(VoteMapper voteMapper, VoteService voteService, RestaurantService restaurantService, RestaurantVoteService restaurantVoteService) {
         this.voteMapper = voteMapper;
         this.voteService = voteService;
+        this.restaurantService = restaurantService;
+        this.restaurantVoteService = restaurantVoteService;
     }
 
     @PostMapping(path = "/save")
@@ -40,13 +46,16 @@ public class VoteController {
                 // Если пользователь голосовал, но еще не голосовал за этот ресторан
                 voteService.save(vote);
             } else {
-                throw new ValidationException("You have already voted for restaurant with id = " + voteDto.getRestaurant().getId());
+                throw new ValidationException("You've already voted for restaurant with id = " + voteDto.getRestaurant().getId());
             }
         } else {
             // Если пользователь вообще не голосовал
             voteService.save(vote);
         }
 
+        // Надо обновить общий рейтинг у ресторана
+        Double avgRating = restaurantVoteService.calculateRestaurantAvgRating(voteDto.getRestaurant().getId());
+        restaurantService.updateRating(voteDto.getRestaurant().getId(), avgRating.longValue());
         return ResponseEntity.status(HttpStatus.CREATED).body(voteDto);
     }
 }

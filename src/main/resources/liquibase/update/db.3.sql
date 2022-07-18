@@ -12,3 +12,5 @@ create table if not exists votes
         constraint fk_votes_users
             references users
 );
+
+ALTER TABLE votes ADD COLUMN IF NOT EXISTS comment varchar(512);

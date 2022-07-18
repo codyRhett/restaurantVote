@@ -18,4 +18,8 @@
         <sqlFile dbms="postgresql" path="update/db.3.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="20220420-4" author="artemryvkin@yandex.ru">
+        <sqlFile dbms="postgresql" path="update/db.4.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

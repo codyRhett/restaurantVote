@@ -1,13 +1,17 @@
 package restaurantVote.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
-@Data
+@Setter
+@Getter
 public class Restaurant {
+
     @Id
     @SequenceGenerator(name = "idSeq", sequenceName = "id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idSeq")
@@ -22,4 +26,7 @@ public class Restaurant {
 
     @Column(name = "rating")
     private Long rating;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<Vote> voteList;
 }

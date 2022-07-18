@@ -2,21 +2,19 @@ package restaurantVote.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import restaurantVote.Dto.VoteDto;
-import restaurantVote.Service.UserService;
+import restaurantVote.dto.VoteDto;
+import restaurantVote.service.UserService;
 import restaurantVote.model.User;
 import restaurantVote.model.Vote;
 
 @Component
 public class VoteMapper {
 
-    private final UserMapper userMapper;
     private final RestaurantMapper restaurantMapper;
     private final UserService userService;
 
     @Autowired
-    public VoteMapper(UserMapper userMapper, RestaurantMapper restaurantMapper, UserService userService) {
-        this.userMapper = userMapper;
+    public VoteMapper(RestaurantMapper restaurantMapper, UserService userService) {
         this.restaurantMapper = restaurantMapper;
         this.userService = userService;
     }
@@ -29,6 +27,7 @@ public class VoteMapper {
         User user = userService.findById(voteDto.getUserId()).orElseThrow();
         vote.setUser(user);
 
+        vote.setComment(vote.getComment());
         vote.setRestaurant(restaurantMapper.fromDto(voteDto.getRestaurant()));
         vote.setId(voteDto.getId());
 
@@ -43,6 +42,7 @@ public class VoteMapper {
         voteDto.setUserId(vote.getUser().getId());
         voteDto.setRestaurant(restaurantMapper.toDto(vote.getRestaurant()));
         voteDto.setId(vote.getId());
+        voteDto.setComment(vote.getComment());
 
         return voteDto;
     }
