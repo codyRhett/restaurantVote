@@ -1,3 +1,4 @@
+restaurantVote\conf\KafkaConsumerConfig.class
 restaurantVote\model\Vote.class
 restaurantVote\service\RestaurantService.class
 restaurantVote\model\Restaurant.class
@@ -17,12 +18,15 @@ restaurantVote\repository\RoleRepository.class
 restaurantVote\repository\UserRepository.class
 restaurantVote\dto\SortDto.class
 restaurantVote\model\User.class
+restaurantVote\conf\KafkaTopicConfig.class
 restaurantVote\rest\VoteController.class
 restaurantVote\repository\RestaurantVoteRepository.class
 restaurantVote\rest\RegistrationRestController.class
 restaurantVote\service\RestaurantVoteService.class
+restaurantVote\conf\KafkaProducerConfig.class
 restaurantVote\dto\UserDto.class
 restaurantVote\mapper\UserMapper.class
 restaurantVote\rest\AdminRestController.class
 restaurantVote\RestaurantVoteApplication.class
+restaurantVote\service\KafkaConsumerService.class
 restaurantVote\repository\RestaurantRepository.class
