@@ -16,7 +16,6 @@ restaurantVote\repository\VoteRepository.class
 restaurantVote\mapper\VoteMapper.class
 restaurantVote\repository\RoleRepository.class
 restaurantVote\repository\UserRepository.class
-restaurantVote\dto\SortDto.class
 restaurantVote\model\User.class
 restaurantVote\conf\KafkaTopicConfig.class
 restaurantVote\rest\VoteController.class

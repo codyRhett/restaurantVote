@@ -25,7 +25,6 @@ C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\KafkaProducerConfig.
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\RestaurantMapper.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Restaurant.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\UserMapper.java
-C:\Synesis\restaurantVote\src\main\java\restaurantVote\dto\SortDto.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\service\KafkaConsumerService.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\dto\VoteDto.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\dto\RestaurantDto.java

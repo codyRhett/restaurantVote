@@ -7,9 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import restaurantVote.dto.RestaurantDto;
 import restaurantVote.mapper.RestaurantMapper;
-import restaurantVote.mapper.VoteMapper;
 import restaurantVote.model.Restaurant;
-import restaurantVote.repository.VoteRepository;
 import restaurantVote.service.RestaurantService;
 
 import javax.validation.Valid;
@@ -22,15 +20,11 @@ public class RestaurantRestController {
 
     private final RestaurantService restaurantService;
     private final RestaurantMapper restaurantMapper;
-    private final VoteRepository voteRepository;
-    private final VoteMapper voteMapper;
 
     @Autowired
-    public RestaurantRestController(RestaurantService restaurantService, RestaurantMapper restaurantMapper, VoteRepository voteRepository, VoteMapper voteMapper) {
+    public RestaurantRestController(RestaurantService restaurantService, RestaurantMapper restaurantMapper) {
         this.restaurantService = restaurantService;
         this.restaurantMapper = restaurantMapper;
-        this.voteRepository = voteRepository;
-        this.voteMapper = voteMapper;
     }
 
     @PostMapping(path = "/")
