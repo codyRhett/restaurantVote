@@ -2,12 +2,14 @@ package restaurantVote.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import restaurantVote.dto.RestaurantDto;
 import restaurantVote.dto.UserDto;
 
 @Service
+@ConditionalOnProperty(value = "kafka.enable", havingValue = "true", matchIfMissing = true)
 public class KafkaConsumerService {
 
     private final Logger logger

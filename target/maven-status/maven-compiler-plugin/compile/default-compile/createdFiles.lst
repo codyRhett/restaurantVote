@@ -4,6 +4,7 @@ restaurantVote\service\RestaurantService.class
 restaurantVote\model\Restaurant.class
 restaurantVote\model\RestaurantVoteList.class
 restaurantVote\model\Role.class
+restaurantVote\conf\MvcConfig.class
 restaurantVote\dto\VoteDto.class
 restaurantVote\mapper\RestaurantMapper.class
 restaurantVote\rest\RestaurantRestController.class
@@ -15,6 +16,7 @@ restaurantVote\dto\RestaurantDto.class
 restaurantVote\repository\VoteRepository.class
 restaurantVote\mapper\VoteMapper.class
 restaurantVote\repository\RoleRepository.class
+restaurantVote\error\ErrorRestaurant.class
 restaurantVote\repository\UserRepository.class
 restaurantVote\model\User.class
 restaurantVote\conf\KafkaTopicConfig.class

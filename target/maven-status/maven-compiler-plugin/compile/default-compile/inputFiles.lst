@@ -4,6 +4,7 @@ C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\RestaurantVoteList.
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\VoteController.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\AppConfiguration.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\repository\UserRepository.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\MvcConfig.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\service\RestaurantService.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\KafkaTopicConfig.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Status.java
@@ -26,6 +27,7 @@ C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\RestaurantMapper.j
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\model\Restaurant.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\mapper\UserMapper.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\service\KafkaConsumerService.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\error\ErrorRestaurant.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\dto\VoteDto.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\dto\RestaurantDto.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\repository\RestaurantVoteRepository.java

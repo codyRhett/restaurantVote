@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import restaurantVote.dto.RestaurantDto;
 import restaurantVote.mapper.RestaurantMapper;
 import restaurantVote.model.Restaurant;
@@ -33,12 +34,23 @@ public class RestaurantRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantMapper.toDto(registeredRestaurant));
     }
 
-    @GetMapping(path = "/list")
-    public ResponseEntity<List<RestaurantDto>> list(Pageable pageable) {
+//    @GetMapping(path = "/list")
+//    public ResponseEntity<List<RestaurantDto>> list(Pageable pageable) {
+//        List<RestaurantDto> registeredRestaurants = restaurantService.findAllSortedBy(pageable).stream()
+//                .map(restaurantMapper::toDto)
+//                .collect(Collectors.toList());
+//        return new ResponseEntity<>(registeredRestaurants, HttpStatus.OK);
+//    }
+
+
+    @GetMapping("/list")
+    public ModelAndView list(Pageable pageable) {
         List<RestaurantDto> registeredRestaurants = restaurantService.findAllSortedBy(pageable).stream()
                 .map(restaurantMapper::toDto)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(registeredRestaurants, HttpStatus.OK);
-    }
 
+        ModelAndView mav = new ModelAndView("restaurants");
+        mav.addObject("restaurantsForm", registeredRestaurants);
+        return mav;
+    }
 }

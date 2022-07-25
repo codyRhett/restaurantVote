@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import restaurantVote.service.UserService;
 
@@ -33,12 +32,21 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests()
-                .antMatchers(REGISTER_ENDPOINT).not().fullyAuthenticated()
-                .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
-                .antMatchers(RESTAURANT_ENDPOINT).authenticated()
-                .and().httpBasic();
+                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // убрав эту опцию мы говорим, что сесссия будет создана только при
+                // необходимости. Нам это нужно для формы login, чтобы сессия создавалась при регистрации пользователя
+                .authorizeRequests()
+                //.and().authorizeRequests()
+                    .antMatchers(REGISTER_ENDPOINT).not().fullyAuthenticated()
+                    .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
+                    .antMatchers(RESTAURANT_ENDPOINT).authenticated()
+                .and().httpBasic()
+                .and()
+                //Настройка для входа в систему
+                    .formLogin()
+                    .loginPage("/login")
+                //Перенарпавление на главную страницу после успешного входа
+                    .defaultSuccessUrl("/")
+                    .permitAll();
     }
 
     @Autowired

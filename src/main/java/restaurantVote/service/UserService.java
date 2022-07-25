@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUserName(userName).orElseThrow();
     }
 
-    public User register(User user) {
+    public User register(User user) throws EntityExistsException {
         if (userRepository.findByUserName(user.getUsername()).isPresent()) {
             throw new EntityExistsException("Entity with userName: " + user.getUsername() + " already exists");
         }
