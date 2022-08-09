@@ -39,14 +39,18 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(REGISTER_ENDPOINT).not().fullyAuthenticated()
                     .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                     .antMatchers(RESTAURANT_ENDPOINT).authenticated()
-                .and().httpBasic()
+                //.and().httpBasic()
                 .and()
                 //Настройка для входа в систему
                     .formLogin()
                     .loginPage("/login")
                 //Перенарпавление на главную страницу после успешного входа
                     .defaultSuccessUrl("/")
-                    .permitAll();
+                    .permitAll()
+                .and()
+                    .logout()
+                    .permitAll()
+                    .logoutSuccessUrl("/");
     }
 
     @Autowired

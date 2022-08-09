@@ -26,6 +26,10 @@ public class RestaurantService {
         return restaurant;
     }
 
+    public Restaurant findById(Long id) {
+        return restaurantRepository.findById(id).orElseThrow();
+    }
+
     public Page<Restaurant> findAllSortedBy(Pageable pageable) {
         return restaurantRepository.findAll(pageable);
     }

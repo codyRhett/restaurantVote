@@ -14,6 +14,7 @@ C:\Synesis\restaurantVote\src\main\java\restaurantVote\repository\RestaurantRepo
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\RestaurantVoteApplication.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\conf\KafkaConsumerConfig.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\repository\RoleRepository.java
+C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\UserRestController.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\RegistrationRestController.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\repository\VoteRepository.java
 C:\Synesis\restaurantVote\src\main\java\restaurantVote\rest\AdminRestController.java

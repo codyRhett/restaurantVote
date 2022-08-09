@@ -32,6 +32,10 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
     public User findByUserName(String userName) {
         return userRepository.findByUserName(userName).orElseThrow();
     }

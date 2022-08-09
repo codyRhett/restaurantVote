@@ -10,16 +10,18 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
   <body>
   <div>
-    <h3>${pageContext.request.userPrincipal.name}</h3>
-
-      <h4><a href="/login">Войти</a></h4>
-      <h4><a href="/api/registration">Зарегистрироваться</a></h4>
+      <h3>${pageContext.request.userPrincipal.name}</h3>
+      <sec:authorize access="!isAuthenticated()">
+        <h4><a href="/login">Войти</a></h4>
+        <h4><a href="/api/registration">Зарегистрироваться</a></h4>
+      </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">
       <h4><a href="/logout">Выйти</a></h4>
+      <h4><a href="/api/restaurant">Зарегистрировать новый ресторан</a></h4>
     </sec:authorize>
     <h4><a href="/api/restaurant/list">Рестораны (только пользователь)</a></h4>
-    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+    <h4><a href="/api/admin/users">Пользователи (только админ)</a></h4>
   </div>
   </body>
 

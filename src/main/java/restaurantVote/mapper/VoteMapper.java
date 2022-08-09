@@ -27,7 +27,7 @@ public class VoteMapper {
         User user = userService.findById(voteDto.getUserId()).orElseThrow();
         vote.setUser(user);
 
-        vote.setComment(vote.getComment());
+        vote.setComment(voteDto.getComment());
         vote.setRestaurant(restaurantMapper.fromDto(voteDto.getRestaurant()));
         vote.setId(voteDto.getId());
 

@@ -11,14 +11,19 @@
 <body>
 <div>
     <h2>Список ресторанов.</h2>
-        <br />
-        <table>
-            <c:forEach items="${restaurantsForm}" var="restaurant">
-                <tr>
-                    <td>${restaurant.name}</user>
-                </tr>
-            </c:forEach>
-        </table>
+       <br />
+    <table>
+        <c:forEach items="${restaurantsForm}" var="restaurant">
+
+            <c:url var="myURL" value="/api/restaurant/"></c:url>
+            <c:set var="myURLpart" value="${restaurant.id}"/>
+
+            <tr>
+                <td><a href="${myURL}${restaurant.id.toString()}" >${restaurant.name}</a></td>
+                <td>${restaurant.rating}</td>
+            </tr>
+        </c:forEach>
+    </table>
 
     <a href="/">Главная</a>
 </div>

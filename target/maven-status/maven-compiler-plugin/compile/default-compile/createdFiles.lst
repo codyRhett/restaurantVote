@@ -14,6 +14,7 @@ restaurantVote\model\Status.class
 restaurantVote\conf\AppConfiguration.class
 restaurantVote\dto\RestaurantDto.class
 restaurantVote\repository\VoteRepository.class
+restaurantVote\rest\UserRestController.class
 restaurantVote\mapper\VoteMapper.class
 restaurantVote\repository\RoleRepository.class
 restaurantVote\error\ErrorRestaurant.class

@@ -6,6 +6,7 @@ import restaurantVote.model.RestaurantVoteList;
 import restaurantVote.repository.RestaurantVoteRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 @Service
@@ -24,7 +25,9 @@ public class RestaurantVoteService {
     }
 
     public List<RestaurantVoteList> findByRestaurantId(Long id) {
-        return em.createNativeQuery("SELECT * FROM restaurant_vote_list", RestaurantVoteList.class).getResultList();
+        Query query = em.createNativeQuery("SELECT * FROM restaurant_vote_list WHERE restaurant_vote_list.restaurant_id = ?", RestaurantVoteList.class);
+        query.setParameter(1, id);
+        return query.getResultList();
     }
 
     public Double calculateRestaurantAvgRating(Long restaurant_id) {

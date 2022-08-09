@@ -1,8 +1,10 @@
 package restaurantVote.dto;
 
 import lombok.Data;
+import restaurantVote.model.Role;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class UserDto {
@@ -24,4 +26,6 @@ public class UserDto {
     private String email;
 
     private String status;
+
+    private List<Role> roles;
 }

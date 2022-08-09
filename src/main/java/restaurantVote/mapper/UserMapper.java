@@ -44,6 +44,8 @@ public class UserMapper {
 
         userDto.setPassword(user.getPassword());
 
+        userDto.setRoles(user.getRoles());
+
         return userDto;
     }
 }
