@@ -6,14 +6,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import restaurantVote.repository.RoleRepository;
-import restaurantVote.repository.UserRepository;
 import restaurantVote.model.Role;
 import restaurantVote.model.Status;
 import restaurantVote.model.User;
+import restaurantVote.repository.RoleRepository;
+import restaurantVote.repository.UserRepository;
 
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,12 +27,14 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final EntityManager em;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder, EntityManager em) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.em = em;
     }
 
     public User updateUser(User user) {
@@ -60,7 +65,16 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+    @Transactional
     public void deleteById(Long id) {
+        Query query = em.createNativeQuery("DELETE FROM user_roles WHERE user_roles.user_id = ?");
+        query.setParameter(1, id);
+        query.executeUpdate();
+
+        query = em.createNativeQuery("DELETE FROM votes WHERE votes.user_id = ?");
+        query.setParameter(1, id);
+        query.executeUpdate();
+
         userRepository.deleteById(id);
     }
 

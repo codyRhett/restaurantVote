@@ -21,7 +21,7 @@ public class UserMapper {
         } else {
             user.setStatus(String.valueOf(Status.ACTIVE));
         }
-
+        user.setRoles(userDto.getRoles());
         user.setPasswordConfirm(userDto.getPassword());
 
         return user;

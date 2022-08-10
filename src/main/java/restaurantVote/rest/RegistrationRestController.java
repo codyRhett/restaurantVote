@@ -6,12 +6,16 @@ import org.springframework.web.servlet.ModelAndView;
 import restaurantVote.dto.UserDto;
 import restaurantVote.mapper.RestaurantMapper;
 import restaurantVote.mapper.UserMapper;
+import restaurantVote.model.Role;
 import restaurantVote.model.User;
+import restaurantVote.repository.RoleRepository;
 import restaurantVote.service.RestaurantService;
 import restaurantVote.service.UserService;
 
 import javax.persistence.EntityExistsException;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/registration")
@@ -21,13 +25,15 @@ public class RegistrationRestController {
     private final UserService userService;
     private final RestaurantService restaurantService;
     private final RestaurantMapper restaurantMapper;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    public RegistrationRestController(UserMapper userMapper, UserService userService, RestaurantService restaurantService, RestaurantMapper restaurantMapper) {
+    public RegistrationRestController(UserMapper userMapper, UserService userService, RestaurantService restaurantService, RestaurantMapper restaurantMapper, RoleRepository roleRepository) {
         this.userMapper = userMapper;
         this.userService = userService;
         this.restaurantService = restaurantService;
         this.restaurantMapper = restaurantMapper;
+        this.roleRepository = roleRepository;
     }
 
     @GetMapping("")
@@ -41,7 +47,10 @@ public class RegistrationRestController {
     @PostMapping(path = "/user")
     public ModelAndView registerUser(@ModelAttribute("userForm") @Valid UserDto userDto) {
         User user = userMapper.fromDto(userDto);
-
+        Role role = roleRepository.findById(2L).orElseThrow();
+        List<Role> roleList = new ArrayList<>();
+        roleList.add(role);
+        user.setRoles(roleList);
         try {
             UserDto registeredUser = userMapper.toDto(userService.register(user));
         } catch (EntityExistsException e) {

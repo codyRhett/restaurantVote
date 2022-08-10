@@ -10,18 +10,37 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
   <body>
   <div>
-      <h3>${pageContext.request.userPrincipal.name}</h3>
+
+<ul class="menu-main">
+      <h2>${pageContext.request.userPrincipal.name}</h2>
       <sec:authorize access="!isAuthenticated()">
-        <h4><a href="/login">Войти</a></h4>
-        <h4><a href="/api/registration">Зарегистрироваться</a></h4>
+        <li><a href="/login">Sign in</a></li>
+        <li><a href="/api/registration">Sign up</a></li>
       </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">
-      <h4><a href="/logout">Выйти</a></h4>
-      <h4><a href="/api/restaurant">Зарегистрировать новый ресторан</a></h4>
+      <sec:authentication var="principal" property="principal" />
+      <li><a href="/logout">Sign out</a></li>
+      <li><a href="/api/restaurant">Sign new restaurant</a></li>
+
+       <c:url var="myURL" value="/api/user/"></c:url>
+       <c:set var="myURLpart" value="${principal.id}"/>
+       <c:set var="myURLpart1" value="/restaurants"/>
+
+       <tr>
+         <td><li><a href="${myURL}${myURLpart}" >Edit user</a></li></td>
+       </tr>
+
+      <tr>
+        <td><li><a href="${myURL}${myURLpart}${myURLpart1}" >Show vote-info</a></li></td>
+      </tr>
+      <li><a href="/api/restaurant/list">Restaurants</a></li>
     </sec:authorize>
-    <h4><a href="/api/restaurant/list">Рестораны (только пользователь)</a></h4>
-    <h4><a href="/api/admin/users">Пользователи (только админ)</a></h4>
+
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <li><a href="/api/admin/users">Show users</a></li>
+    </sec:authorize>
+</ul>
   </div>
   </body>
 

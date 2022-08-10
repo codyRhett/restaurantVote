@@ -93,6 +93,12 @@ public class RestaurantRestController {
         return mav;
     }
 
+    @GetMapping(path = "/delete/{id}")
+    public ModelAndView  deleteRestaurantById(@PathVariable(name = "id") Long id) {
+        restaurantService.deleteById(id);
+        return new ModelAndView("redirect:/");
+    }
+
     @GetMapping(path = "")
     public ModelAndView  getRestaurantForm() {
         ModelAndView mav = new ModelAndView("restaurantRegistration");

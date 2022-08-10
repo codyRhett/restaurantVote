@@ -10,18 +10,20 @@
 </head>
 <body>
 <div>
-    <h2>Ресторан</h2>
     <form action="/api/vote/save" modelAttribute="voteForm" method="POST">
-        <br />
         <c:set var="restaurantD" value="${restaurantForm}"/>
         <h2>${restaurantD.name}</h2>
         <c:set var="vote" value="${voteForm}"/>
+        <h4>Оцените ресторан</h4>
         <input name="rating" type="integer" placeholder="Rating" min="1" max="10" value="${vote.rating}"/>
         <input name="userId" type="integer" placeholder="UserId" value="${vote.userId}" hidden=true/>
         <input name="restaurant.id" type="integer" value="${vote.restaurant.id}" hidden=true/>
         <input name="restaurant.name" type="text" value="${vote.restaurant.name}" hidden=true/>
         <input name="id" type="integer" value="${vote.id}" hidden=true/>
+        <h4>Напишите комментарий</h4>
         <input name="comment" type="integer" value="${vote.comment}"/>
+        </br>
+        </br>
         <button type="submit">Оценить</button>
     </form>
     <br />

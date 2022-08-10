@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import restaurantVote.dto.UserDto;
 import restaurantVote.mapper.UserMapper;
+import restaurantVote.model.Role;
 import restaurantVote.model.User;
+import restaurantVote.repository.RoleRepository;
 import restaurantVote.service.UserService;
 
 import java.util.List;
@@ -20,11 +22,13 @@ public class AdminRestController {
 
     private final UserService userService;
     private final UserMapper userMapper;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    public AdminRestController(UserService userService, UserMapper userMapper) {
+    public AdminRestController(UserService userService, UserMapper userMapper, RoleRepository roleRepository) {
         this.userService = userService;
         this.userMapper = userMapper;
+        this.roleRepository = roleRepository;
     }
 
 //    @GetMapping(value = "/user/{id}")
@@ -61,8 +65,16 @@ public class AdminRestController {
 //        }
         UserDto result = userMapper.toDto(user.orElseThrow());
         ModelAndView mav = new ModelAndView("user");
+        List<Role> roles = roleRepository.findAll();
+        mav.addObject("roles", roles);
         mav.addObject("userForm", result);
         return mav;
+    }
+
+    @GetMapping(value = "user/delete/{id}")
+    public ModelAndView deleteUserById(@PathVariable(name = "id") Long id) {
+        userService.deleteById(id);
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping(value = "update/user/{id}")

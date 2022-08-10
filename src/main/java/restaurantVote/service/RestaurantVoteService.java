@@ -3,7 +3,6 @@ package restaurantVote.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restaurantVote.model.RestaurantVoteList;
-import restaurantVote.repository.RestaurantVoteRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -11,17 +10,21 @@ import java.util.List;
 
 @Service
 public class RestaurantVoteService {
-    private final RestaurantVoteRepository restaurantVoteRepository;
     private final EntityManager em;
 
     @Autowired
-    public RestaurantVoteService(RestaurantVoteRepository restaurantVoteRepository, EntityManager em) {
-        this.restaurantVoteRepository = restaurantVoteRepository;
+    public RestaurantVoteService(EntityManager em) {
         this.em = em;
     }
 
     public List findAll() {
         return em.createNativeQuery("SELECT * FROM restaurant_vote_list").getResultList();
+    }
+
+    public List<RestaurantVoteList> findByUserId(Long id) {
+        Query query = em.createNativeQuery("SELECT * FROM restaurant_vote_list WHERE restaurant_vote_list.user_id = ?", RestaurantVoteList.class);
+        query.setParameter(1, id);
+        return query.getResultList();
     }
 
     public List<RestaurantVoteList> findByRestaurantId(Long id) {

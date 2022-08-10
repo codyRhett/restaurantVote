@@ -11,22 +11,17 @@
 </head>
 <body>
 <div>
-    <h2>Список пользователей.</h2>
-       <br />
+    <h2>Список ресторанов, за которые вы проголосвали</h2>
     <table>
-        <c:forEach items="${usersForm}" var="user">
-
-            <c:url var="myURL" value="/api/admin/user/"></c:url>
-            <c:url var="myURLdelete" value="/api/admin/user/delete/"></c:url>
-            <c:set var="myURLpart" value="${user.id}"/>
-
-            <tr>
-                <td><a href="${myURL}${user.id.toString()}" >${user.username}</a></td>
-                <td><a href="${myURLdelete}${user.id.toString()}">Delete</a></td>
-            </tr>
+        <tr><th>Название ресторана</th><th>Ваша оценка</th></tr>
+        <c:forEach items="${restaurantVoteForm}" var="restaurant">
+            <tr><td>${restaurant.name}</td><td>${restaurant.rating}</td></tr>
         </c:forEach>
     </table>
-
+    <br/>
+    <input type="button" onclick="history.back(-2); return false;" value="Назад"/>
+    <br/>
+    <br/>
     <a href="/">Главная</a>
 </div>
 </body>
