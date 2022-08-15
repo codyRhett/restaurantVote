@@ -20,7 +20,7 @@
              autofocus="true"/>
       <input name="password" type="password" placeholder="Password"/>
       <button type="submit">Log In</button>
-      <h4><a href="api/registration/user">Зарегистрироваться</a></h4>
+      <h4><a href="api/registration">Зарегистрироваться</a></h4>
     </div>
     <input type="button" onclick="history.back(-2); return false;" value="Назад"/>
   </form>
