@@ -1,1 +1,1 @@
-web: java -Dserver.port=8080 $JAVA_OPTS -jar target/restaurantVote-1.0-SNAPSHOT.jar
+web: java -jar target/restaurantVote-1.0-SNAPSHOT.jar
