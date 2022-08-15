@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
   <body>
   <div>
-
+<h3>Веб-сервис голосования за лучший ресторан</h3>
 <ul class="menu-main">
       <h2>${pageContext.request.userPrincipal.name}</h2>
       <sec:authorize access="!isAuthenticated()">

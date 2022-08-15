@@ -23,13 +23,6 @@ create table if not exists roles
     name varchar(256) not null
 );
 
---INSERT INTO roles(id, name) VALUES
---(1, 'ROLE_ADMIN'),
---(2, 'ROLE_USER');
-
---INSERT INTO users(id, user_name, first_name, last_name, email, password) VALUES
---(1, 'admin', 'admin', 'admin', 'admin@yandex.ru', '$2a$12$c6QmI2pHr560Km6Pn5rpUeNji/GMLtztb7h4BInqbX/ovSlgqLD9m');
-
 create table if not exists user_roles
 (
    user_id bigint not null
@@ -39,6 +32,10 @@ create table if not exists user_roles
         constraint fk_user_roles_roles
             references roles
 );
+INSERT into roles VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');
 
-INSERT INTO user_roles(user_id, role_id) VALUES
-(1, 1);
+insert into users (id, user_name, first_name, last_name, email, password) values
+(1, 'admin', 'admin', 'admin', 'admin@ya.ru', '$2y$10$E1ga4sumP.Bfum4CbgkJEuRDOlhNh2..p//nc/philDtVCFQ6Ow9i');
+insert into user_roles values(1,1);
