@@ -14,11 +14,14 @@ import restaurantVote.model.Vote;
 import restaurantVote.service.RestaurantService;
 import restaurantVote.service.UserService;
 import restaurantVote.service.VoteService;
+import ru.CryptoPro.CAdES.CAdESSignature;
+import ru.CryptoPro.CAdES.exception.CAdESException;
 
 import javax.persistence.EntityExistsException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -90,7 +93,28 @@ public class RestaurantRestController {
 
         ModelAndView mav = new ModelAndView("restaurants");
         mav.addObject("restaurantsForm", registeredRestaurants);
+
+        try {
+            CAdESSignature cAdESSignature = new CAdESSignature();
+        } catch (CAdESException e) {
+            e.printStackTrace();
+        }
+
         return mav;
+    }
+
+    @GetMapping(path = "/example")
+    public ModelAndView example() throws NoSuchFieldException {
+        List<Long> ids = Arrays.asList(1L,2L,3L);
+        List<String> names = Arrays.asList("name", "cuisine");
+
+        List<Object[]> results = restaurantService.fromArrayToList(ids, names);
+        for (Object[] result: results) {
+            String name = result[0].toString();
+            int temp = 0;
+        }
+
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping(path = "/delete/{id}")

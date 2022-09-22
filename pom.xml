@@ -23,6 +23,162 @@
 
     <dependencies>
         <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>ASN1P</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/ASN1P.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>asn1rt</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/asn1rt.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>AdES-core</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/AdEs-core.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>CAdES</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/CAdES.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/forms_rt.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>J6CF</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/J6CF.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>J6Oscar</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/J6Oscar.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCP</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCP.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCPinst</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCPinst.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCPRequest</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCPRequest.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCPRevCheck</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCPRevCheck.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCPRevTools</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCPRevTools.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCPxml</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCPxml.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>JCryptoP</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/JCryptoP.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>OCF</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/OCF.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>Oscar</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/Oscar.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>XMLDSigRI</artifactId>
+            <version>1.054</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/XMLDSigRI.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>bcprov-jdk15on-1.60</artifactId>
+            <version>1.60</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/bcprov-jdk15on-1.60.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jcp</groupId>
+            <artifactId>bcpkix-jdk15on-1.60</artifactId>
+            <version>1.60</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/bcpkix-jdk15on-1.60.jar</systemPath>
+        </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
+<!--                <dependency>-->
+<!--                    <groupId>org.bouncycastle</groupId>-->
+<!--                    <artifactId>bcpkix-jdk15on</artifactId>-->
+<!--                    <version>1.48</version>-->
+<!--                </dependency>-->
+<!--                &lt;!&ndash; https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on &ndash;&gt;-->
+<!--                <dependency>-->
+<!--                    <groupId>org.bouncycastle</groupId>-->
+<!--                    <artifactId>bcprov-jdk15on</artifactId>-->
+<!--                    <version>1.48</version>-->
+<!--                </dependency>-->
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -109,6 +265,16 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>5.2.0.RELEASE</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bouncycastle</groupId>-->
+<!--            <artifactId>bcpkix-jdk15on</artifactId>-->
+<!--            <version>1.68</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -150,37 +316,6 @@
 
     <build>
         <plugins>
-
-<!--            <plugin>-->
-<!--                <groupId>io.fabric8</groupId>-->
-<!--                <artifactId>docker-maven-plugin</artifactId>-->
-<!--                <version>0.20.1</version>-->
-<!--                <configuration>-->
-<!--                    <images>-->
-<!--                        <image>-->
-<!--                            <name>app</name>-->
-<!--                            <build>-->
-<!--                                <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>-->
-<!--                                <assembly>-->
-<!--                                    <mode>dir</mode>-->
-<!--                                    <targetDir>/</targetDir>-->
-<!--                                    <descriptor>${project.basedir}/assembly.xml</descriptor>-->
-<!--                                </assembly>-->
-<!--                            </build>-->
-<!--                        </image>-->
-<!--                    </images>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>build</id>-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>build</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -191,6 +326,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <includeSystemScope>true</includeSystemScope>
                 </configuration>
             </plugin>
             <plugin>
@@ -240,5 +376,15 @@
             </plugin>
         </plugins>
     </build>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>12.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

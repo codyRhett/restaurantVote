@@ -56,9 +56,7 @@ public class KafkaConsumerConfig {
     public ConsumerFactory<String, RestaurantDto> restaurantConsumerFactory() {
         // is used to create new Consumer instances where all consumer share
         // common configuration properties mentioned in this bean.
-        return new DefaultKafkaConsumerFactory<>(userConsumerConfigs(),
-                new StringDeserializer(),
-                new JsonDeserializer<>(RestaurantDto.class));
+        return new DefaultKafkaConsumerFactory<>(userConsumerConfigs());
     }
 
     @Bean
@@ -78,6 +76,8 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return props;
     }
 

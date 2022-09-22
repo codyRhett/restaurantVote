@@ -19,6 +19,7 @@ public class KafkaConsumerService {
             groupId = "${kafka.topic.group.id}",
             containerFactory = "userKafkaListenerContainerFactory")
     public void consume(UserDto userDto) {
+
         logger.info(String.format("Message recieved -> %s", userDto));
     }
 

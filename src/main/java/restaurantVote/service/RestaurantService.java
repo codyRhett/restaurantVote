@@ -1,5 +1,6 @@
 package restaurantVote.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import restaurantVote.repository.RestaurantRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class RestaurantService {
@@ -39,6 +41,12 @@ public class RestaurantService {
         restaurant.setRating(rating);
         restaurantRepository.save(restaurant);
         return restaurant;
+    }
+
+    public <T> List<T> fromArrayToList(@NotNull List<Long> ids, List<String> fieldNames) {
+        Query query = em.createNativeQuery("Select " + "id, " + String.join(",", fieldNames) + " from restaurants where restaurants.id in(:ids)");
+        query.setParameter("ids", ids);
+        return query.getResultList();
     }
 
     public Restaurant findById(Long id) {
