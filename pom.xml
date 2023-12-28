@@ -20,129 +20,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <kotlin.version>1.7.20-Beta</kotlin.version>
     </properties>
-
     <dependencies>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>ASN1P</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/ASN1P.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>asn1rt</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/asn1rt.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>AdES-core</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/AdEs-core.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>CAdES</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/CAdES.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>forms_rt</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/forms_rt.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>J6CF</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/J6CF.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>J6Oscar</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/J6Oscar.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCP</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCP.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCPinst</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCPinst.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCPRequest</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCPRequest.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCPRevCheck</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCPRevCheck.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCPRevTools</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCPRevTools.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCPxml</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCPxml.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>JCryptoP</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/JCryptoP.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>OCF</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/OCF.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>Oscar</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Oscar.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>XMLDSigRI</artifactId>
-            <version>1.054</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/XMLDSigRI.jar</systemPath>
-        </dependency>
-
-
         <dependency>
             <groupId>jcp</groupId>
             <artifactId>bcprov-jdk15on-1.60</artifactId>
@@ -265,11 +143,6 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>5.2.0.RELEASE</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.bouncycastle</groupId>-->
-<!--            <artifactId>bcpkix-jdk15on</artifactId>-->
-<!--            <version>1.68</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>

@@ -14,8 +14,6 @@ import restaurantVote.model.Vote;
 import restaurantVote.service.RestaurantService;
 import restaurantVote.service.UserService;
 import restaurantVote.service.VoteService;
-import ru.CryptoPro.CAdES.CAdESSignature;
-import ru.CryptoPro.CAdES.exception.CAdESException;
 
 import javax.persistence.EntityExistsException;
 import javax.servlet.http.HttpServletRequest;
@@ -93,12 +91,6 @@ public class RestaurantRestController {
 
         ModelAndView mav = new ModelAndView("restaurants");
         mav.addObject("restaurantsForm", registeredRestaurants);
-
-        try {
-            CAdESSignature cAdESSignature = new CAdESSignature();
-        } catch (CAdESException e) {
-            e.printStackTrace();
-        }
 
         return mav;
     }
