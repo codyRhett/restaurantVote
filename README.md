@@ -1,6 +1,8 @@
 # restaurantVote
 Voting System for restaurants
 
+Version 0.0.1 - REST HTTP MAVEN
+
 Service is developed using Spring Boot, Spring MVC, Spring Security, Spring Data, Liquibase, Hibernate
 
 Backend for Voting System for the best Restaurant
