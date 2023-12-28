@@ -1,7 +1,7 @@
 package restaurantVote.rest;
 
-import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import restaurantVote.dto.UserDto;
