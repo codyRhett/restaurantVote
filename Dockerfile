@@ -14,9 +14,24 @@
 #EXPOSE 8080
 #ENTRYPOINT ["java", "-jar", "restaurantVote-1.0-SNAPSHOT.jar"]
 
+# FROM adoptopenjdk/openjdk11:ubi
+# ARG JAR_FILE=restaurantVote-1.0-SNAPSHOT.jar
+# COPY ${JAR_FILE} application.jar
+# COPY src/main/webapp .
+# EXPOSE 80
+# ENTRYPOINT ["java","-jar","/application.jar"]
+
 FROM adoptopenjdk/openjdk11:ubi
-ARG JAR_FILE=restaurantVote-1.0-SNAPSHOT.jar
-COPY ${JAR_FILE} application.jar
+ARG WAR_FILE=target/restaurantVote-1.0-SNAPSHOT.war
+COPY ${WAR_FILE} application.war
 COPY src/main/webapp .
-EXPOSE 80
-ENTRYPOINT ["java","-jar","/application.jar"]
+ENTRYPOINT ["java","-jar","/application.war"]
+
+# FROM adoptopenjdk/openjdk11:ubi
+# RUN apt-get update && apt-get install -y postgresql postgresql-contrib
+# ARG JAR_FILE=target/restaurantVote-1.0-SNAPSHOT.jar
+# COPY ${JAR_FILE} application.jar
+# COPY src/main/webapp .
+# # ADD target/your-app-name-1.0.0.jar app.jar
+# ENTRYPOINT ["java","-jar","/application.jar"]
+# EXPOSE 8080

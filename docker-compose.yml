@@ -1,29 +1,28 @@
-#version: '2'
-#
-#services:
-#  app:
-#    image: 'codyrhett/helloworld:demoSql'
-#    build:
-#      context: .
-#    container_name: app
-#    ports:
-#      - "8085:80"
-#    depends_on:
-#      - db
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5433/restaurant
-#      - SPRING_LIQUIBASE_URL=jdbc:postgresql://host.docker.internal:5433/restaurant
-#      - SPRING_DATASOURCE_USERNAME=postgres
-#      - SPRING_DATASOURCE_PASSWORD=2236
-#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-#
-#  db:
-#    image: 'postgres:latest'
-#    container_name: db
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=2236
-#      - POSTGRES_DB=restaurant
-#      - POSTGRES_HOST_AUTH_METHOD=trust
-#    ports:
-#      - "5433:5432"
+version: '2'
+
+services:
+  app:
+    image: 'restaurant'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/restaurant
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db:5433/restaurant
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2236
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2236
+      - POSTGRES_DB=restaurant
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PGPORT= 5433
