@@ -24,4 +24,4 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=2236
       - POSTGRES_DB=restaurant
-      - PGPORT= 5433
+      - PGPORT=5433
