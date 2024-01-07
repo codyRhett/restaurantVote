@@ -7,7 +7,13 @@ Service is developed using Spring Boot, Spring MVC, Spring Security, Spring Data
 
 Backend for Voting System for the best Restaurant
 
-psql -U postgres -W -h localhost
+Before launching application it is neccessary:
+1. Install Postgresql 13
+2. Run command in command line psql -U postgres -W -h localhost. Connect to Env
+3. Then run
+    CREATE ROLE role;
+    CREATE DATABASE restaurant WITH OWNER = role ENCODING = 'UTF8' LC_COLLATE = 'Russian_Russia.1251' LC_CTYPE = 'Russian_Russia.1251';
+    GRANT ALL PRIVILEGES ON DATABASE restaurant TO role;
 
 Functionality
 User can be authentiphicated using endpoint - http://localhost:8080/api/registration/user with example body:
