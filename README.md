@@ -7,6 +7,8 @@ Service is developed using Spring Boot, Spring MVC, Spring Security, Spring Data
 
 Backend for Voting System for the best Restaurant
 
+psql -U postgres -W -h localhost
+
 Functionality
 User can be authentiphicated using endpoint - http://localhost:8080/api/registration/user with example body:
 {
