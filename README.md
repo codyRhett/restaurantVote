@@ -11,6 +11,13 @@ Before launching application it is neccessary:
 1. Install Postgresql 13
 2. If you use Ubuntu you should do next:
 
+install chrome in VM ubuntu:
+- wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+- sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+
+
 https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
 https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
 
@@ -30,6 +37,10 @@ sudo pg_ctlcluster 13 main restart
 
 Доступ к виртуальной машине:
 ssh -i ubuntu restaurant@158.160.136.62
+
+
+Для доступа открываем браузер и http://158.160.136.62:8080/
+158.160.136.62 - внешний IP адрес из клауда
 
 
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
