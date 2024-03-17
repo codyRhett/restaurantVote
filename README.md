@@ -9,8 +9,13 @@ Backend for Voting System for the best Restaurant
 
 Before launching application it is neccessary:
 1. Install Postgresql 13
-2. Run command in command line psql -U postgres -W -h localhost. Connect to Env
-3. Then run
+2. If you use Ubuntu you should do next:
+    - sudo apt install curl gpg gnupg2 software-properties-common apt-transport-https lsb-release ca-certificates
+    - curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+    - sudo apt-get update
+    - sudo apt install postgresql-13
+4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
+5. Then run
     CREATE ROLE role;
     CREATE DATABASE restaurant WITH OWNER = role ENCODING = 'UTF8' LC_COLLATE = 'Russian_Russia.1251' LC_CTYPE = 'Russian_Russia.1251';
     GRANT ALL PRIVILEGES ON DATABASE restaurant TO role;
