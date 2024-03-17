@@ -24,6 +24,9 @@ sudo nano /etc/postgresql/13/main/postgresql.conf
 
 sudo pg_ctlcluster 13 main restart
 
+Доступ к виртуальной машине:
+ssh -i ubuntu restaurant@158.160.136.62
+
 
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
 5. Then run
