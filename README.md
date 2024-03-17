@@ -10,6 +10,10 @@ Backend for Voting System for the best Restaurant
 Before launching application it is neccessary:
 1. Install Postgresql 13
 2. If you use Ubuntu you should do next:
+
+https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
+https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
+
     - sudo apt install curl gpg gnupg2 software-properties-common apt-transport-https lsb-release ca-certificates
     - curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
     - sudo apt-get update
