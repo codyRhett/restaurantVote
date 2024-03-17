@@ -18,7 +18,13 @@ Before launching application it is neccessary:
     - sudo -u postgres psql
 
   mvn spring-boot:run
-      
+
+sudo nano /etc/postgresql/13/main/pg_hba.conf
+sudo nano /etc/postgresql/13/main/postgresql.conf
+
+sudo pg_ctlcluster 13 main restart
+
+
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
 5. Then run
     - CREATE ROLE role;
