@@ -16,7 +16,8 @@ Before launching application it is neccessary:
     - sudo apt install postgresql-13
   Связано это с тем, что при установке СУБД создается пользователь Linux – postgres и также внутри СУБД создается пользователь postgres. Это разные пользователи – один для ОС, другой для СУБД, просто их имя совпадает, как раз для целей авторизации и предоставления доступа. Роли СУБД aeugene, естественно, не создается. Для того, чтобы зайти в СУБД нам необходимо или создать пользователя aeugene в СУБД с соответствующими правами (а как нам это сделать, если мы еще не зашли?) или стандартный вариант – запустить psql под пользователем postgres.
     - sudo -u postgres psql
-  
+
+  mvn spring-boot:run
       
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
 5. Then run
