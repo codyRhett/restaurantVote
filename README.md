@@ -21,6 +21,8 @@ install chrome in VM ubuntu:
 https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
 https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
 
+УСТАНАВЛИВАЕМ Postgresql на VM
+
     - sudo apt install curl gpg gnupg2 software-properties-common apt-transport-https lsb-release ca-certificates
     - curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
     - sudo apt-get update
@@ -30,9 +32,11 @@ https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
 
   mvn spring-boot:run
 
+ИЗМЕНИТЬ конфиги
 sudo nano /etc/postgresql/13/main/pg_hba.conf
 sudo nano /etc/postgresql/13/main/postgresql.conf
 
+ПЕРЕЗАПУСТИТЬ postgresql
 sudo pg_ctlcluster 13 main restart
 
 Доступ к виртуальной машине:
@@ -41,7 +45,6 @@ ssh -i ubuntu restaurant@158.160.136.62
 
 Для доступа открываем браузер и http://158.160.136.62:8080/
 158.160.136.62 - внешний IP адрес из клауда
-
 
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
 5. Then run
