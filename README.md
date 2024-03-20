@@ -9,7 +9,10 @@ Backend for Voting System for the best Restaurant
 
 Before launching application it is neccessary:
 1. Install Postgresql 13
-2. If you use Ubuntu you should do next:
+
+   Далее идет часть для развертывания на VM (я разворачивал на яндекс клауде)
+***********************************************************************************
+3. If you use Ubuntu you should do next:
 
 install chrome in VM ubuntu:
 - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -45,6 +48,9 @@ ssh -i ubuntu restaurant@158.160.136.62
 
 Для доступа открываем браузер и http://158.160.136.62:8080/
 158.160.136.62 - внешний IP адрес из клауда
+***********************************************************************************
+
+Если не нужно VM, то сразу переходим к пункту 4
 
 4. Run command in command line psql -U postgres -W -h localhost. Connect to Env
 5. Then run
