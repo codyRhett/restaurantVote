@@ -13,6 +13,7 @@ Before launching application it is neccessary:
    Далее идет часть для развертывания на VM (я разворачивал на яндекс клауде)
 ***********************************************************************************
 3. If you use Ubuntu you should do next:
+Я использовал виртуальную машину на яндекс клауде - https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
 
 install chrome in VM ubuntu:
 - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -20,9 +21,7 @@ install chrome in VM ubuntu:
 - sudo apt-get update
 - sudo apt-get install google-chrome-stable
 
-
-https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
-https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
+Подключение к БД из командной строки - https://aristov.tech/blog/podklyuchenie-k-postgresu-iz-komandnoj-stroki/
 
 УСТАНАВЛИВАЕМ Postgresql на VM
 
