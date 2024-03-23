@@ -14,6 +14,8 @@ Before launching application it is neccessary:
 ***********************************************************************************
 3. If you use Ubuntu you should do next:
 Я использовал виртуальную машину на яндекс клауде - https://vk.com/@web.varlamov-java-prilozhenie-na-yandexcloud
+После создания VM осуществляем подключение к виртуальной машине:
+ssh -i ubuntu restaurant@158.160.136.62
 
 install chrome in VM ubuntu:
 - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -32,7 +34,7 @@ install chrome in VM ubuntu:
   Связано это с тем, что при установке СУБД создается пользователь Linux – postgres и также внутри СУБД создается пользователь postgres. Это разные пользователи – один для ОС, другой для СУБД, просто их имя совпадает, как раз для целей авторизации и предоставления доступа. Роли СУБД aeugene, естественно, не создается. Для того, чтобы зайти в СУБД нам необходимо или создать пользователя aeugene в СУБД с соответствующими правами (а как нам это сделать, если мы еще не зашли?) или стандартный вариант – запустить psql под пользователем postgres.
     - sudo -u postgres psql
 
-  mvn spring-boot:run
+  
 
 ИЗМЕНИТЬ конфиги
 sudo nano /etc/postgresql/13/main/pg_hba.conf
@@ -41,9 +43,7 @@ sudo nano /etc/postgresql/13/main/postgresql.conf
 ПЕРЕЗАПУСТИТЬ postgresql
 sudo pg_ctlcluster 13 main restart
 
-Доступ к виртуальной машине:
-ssh -i ubuntu restaurant@158.160.136.62
-
+Запуск самого приложения - mvn spring-boot:run
 
 Для доступа открываем браузер и http://158.160.136.62:8080/
 158.160.136.62 - внешний IP адрес из клауда
