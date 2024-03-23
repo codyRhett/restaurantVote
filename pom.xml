@@ -20,13 +20,20 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>jcp</groupId>
-            <artifactId>bcprov-jdk15on-1.60</artifactId>
-            <version>1.60</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/bcprov-jdk15on-1.60.jar</systemPath>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jcp</groupId>-->
+<!--            <artifactId>bcprov-jdk15on-1.60</artifactId>-->
+<!--            <version>1.60</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/libs/bcprov-jdk15on-1.60.jar</systemPath>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>jcp</groupId>-->
+<!--            <artifactId>bcpkix-jdk15on-1.60</artifactId>-->
+<!--            <version>1.60</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/libs/bcpkix-jdk15on-1.60.jar</systemPath>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -167,4 +174,15 @@
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>12.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
