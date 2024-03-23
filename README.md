@@ -1,5 +1,5 @@
 # restaurantVote
-Voting System for restaurants
+Voting System for restaurants - ЗАПУСК ПРИЛОЖЕНИЯ БЕЗ КОНТЕЙНЕРИЗАЦИИ
 
 Version 0.0.1 - REST HTTP MAVEN
 
