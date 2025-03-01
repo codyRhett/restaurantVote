@@ -14,7 +14,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/restaurant
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://db:5433/restaurant
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=2236
+      - SPRING_DATASOURCE_PASSWORD=1234
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   db:
@@ -22,6 +22,6 @@ services:
     container_name: db
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=2236
+      - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=restaurant
       - PGPORT=5433

@@ -9,8 +9,8 @@ Functionality
 User can be authentiphicated using endpoint - http://localhost:8080/api/registration/user with example body:
 {
     "username":"cody",
-    "firstName":"artem1",
-    "lastName":"ryvkin1",
+    "firstName":"ivan1",
+    "lastName":"ivanov1",
     "password":"cody1234",
     "email":"cod1y@ya.ru"
 }
