@@ -3,8 +3,7 @@ version: '2'
 services:
   app:
     image: 'restaurant'
-    build:
-      context: .
+    build: .
     container_name: app
     ports:
       - "8080:8080"
@@ -20,6 +19,7 @@ services:
   db:
     image: 'postgres:latest'
     container_name: db
+    build: .
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
