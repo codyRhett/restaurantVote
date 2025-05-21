@@ -10,10 +10,16 @@ RUN useradd -r -u 1001 appuser && \
     # 0 (остальные): Нет прав (---).
      chmod 750 /app && \
     # Назначение владельца директории /app
-    chown appuser:appuser /app
+    chown appuser:appuser /app && \
+    mkdir -p /app/data/logs && \
+    chmod -R 750 /app/data/logs && \
+    chown -R appuser:appuser /app/data/logs
 
 # укзываем рабочую дирректорию
 WORKDIR /app
+
+# Укажите переменную окружения для пути к логам
+ENV LOG_DIR=/app/data/logs
 
 # Копируем файлы с правами
 ARG WAR_FILE=target/restaurantVote-1.0-SNAPSHOT.war

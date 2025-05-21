@@ -1,5 +1,6 @@
 package restaurantVote.rest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/admin")
+@Slf4j
 public class AdminRestController {
 
     private final UserService userService;
@@ -50,6 +52,7 @@ public class AdminRestController {
 
     @GetMapping(value = "/users")
     public ModelAndView getAllUsers() {
+        log.debug("getAllUsers");
         List<UserDto> registeredUsers = userService.findAllUsers().stream()
                 .map(userMapper::toDto).collect(Collectors.toList());
         ModelAndView mav = new ModelAndView("users");
@@ -59,6 +62,7 @@ public class AdminRestController {
 
     @GetMapping(value = "/user/{id}")
     public ModelAndView getUserById(@PathVariable(name = "id") Long id) {
+        log.debug("getUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -73,12 +77,14 @@ public class AdminRestController {
 
     @GetMapping(value = "user/delete/{id}")
     public ModelAndView deleteUserById(@PathVariable(name = "id") Long id) {
+        log.debug("deleteUserById");
         userService.deleteById(id);
         return new ModelAndView("redirect:/");
     }
 
     @GetMapping(value = "update/user/{id}")
     public ModelAndView updateUserById(@PathVariable(name = "id") Long id) {
+        log.debug("updateUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -92,6 +98,7 @@ public class AdminRestController {
 
     @DeleteMapping(value = "/user/delete/")
     public ResponseEntity<Void> deleteById(@PathVariable(name = "id") Long id) {
+        log.debug("deleteById");
         userService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

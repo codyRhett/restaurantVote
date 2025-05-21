@@ -1,9 +1,16 @@
 version: '2'
-
 services:
   app:
     image: 'restaurant'
     build: .
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+    volumes:
+      - ./host_logs:/app/data/logs  # папка на хосте -> контейнер
+      - app_volume:/app/data/logs
+    user: "1001:1001"
     container_name: app
     ports:
       - "8080:8080"
@@ -20,8 +27,14 @@ services:
     image: 'postgres:latest'
     container_name: db
     build: .
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=restaurant
       - PGPORT=5433
+volumes:
+  app_volume:

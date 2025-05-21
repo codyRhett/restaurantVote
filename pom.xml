@@ -104,6 +104,60 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
 
+
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.26</version>
+        </dependency>
+
+
+
+<!--        &lt;!&ndash; SLF4J API &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>2.0.17</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.5.15</version>-->
+<!--        </dependency>-->
+
+<!--        -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-simple</artifactId>-->
+<!--            <version>2.0.17</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Мост для Log4j → SLF4J &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-to-slf4j</artifactId>-->
+<!--            <version>2.17.2</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Мост для JUL → SLF4J &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>jul-to-slf4j</artifactId>-->
+<!--            <version>2.0.17</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Реализация SLF4J (Logback) &ndash;&gt;-->
+
+
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-core</artifactId>-->
+<!--            <version>1.5.15</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>

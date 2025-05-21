@@ -1,5 +1,9 @@
 package restaurantVote.rest;
 
+//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +30,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/restaurant")
+//@Slf4j
 public class RestaurantRestController {
 
     private final RestaurantService restaurantService;
@@ -33,7 +38,8 @@ public class RestaurantRestController {
     private final UserService userService;
     private final VoteService voteService;
     private final VoteMapper voteMapper;
-
+    private static final Logger log = LoggerFactory.getLogger(
+            RestaurantRestController.class);
     @Autowired
     public RestaurantRestController(RestaurantService restaurantService, RestaurantMapper restaurantMapper, UserService userService, VoteService voteService, VoteMapper voteMapper) {
         this.restaurantService = restaurantService;
@@ -61,6 +67,7 @@ public class RestaurantRestController {
     // Вывод на экран полной инфы о ресторане
     @GetMapping("/{id}")
     public ModelAndView findRestaurantById(@PathVariable(name = "id") Long id, HttpServletRequest request) {
+        log.debug("findRestaurantById");
         Principal principal = request.getUserPrincipal();
         Restaurant restaurant = restaurantService.findById(id);
         ModelAndView mav = new ModelAndView("restaurant");
@@ -85,6 +92,7 @@ public class RestaurantRestController {
 
     @GetMapping("/list")
     public ModelAndView list(Pageable pageable) {
+        log.debug("list of restaurants");
         List<RestaurantDto> registeredRestaurants = restaurantService.findAllSortedBy(pageable).stream()
                 .map(restaurantMapper::toDto)
                 .collect(Collectors.toList());
@@ -97,6 +105,7 @@ public class RestaurantRestController {
 
     @GetMapping(path = "/example")
     public ModelAndView example() throws NoSuchFieldException {
+        log.debug("example");
         List<Long> ids = Arrays.asList(1L,2L,3L);
         List<String> names = Arrays.asList("name", "cuisine");
 
@@ -111,12 +120,14 @@ public class RestaurantRestController {
 
     @GetMapping(path = "/delete/{id}")
     public ModelAndView  deleteRestaurantById(@PathVariable(name = "id") Long id) {
+        log.debug("deleteRestaurantById");
         restaurantService.deleteById(id);
         return new ModelAndView("redirect:/");
     }
 
     @GetMapping(path = "")
     public ModelAndView  getRestaurantForm() {
+        log.debug("getRestaurantForm");
         ModelAndView mav = new ModelAndView("restaurantRegistration");
         mav.addObject("restaurantRegistrationForm", new RestaurantDto());
         return mav;
@@ -124,6 +135,7 @@ public class RestaurantRestController {
 
     @PostMapping(path = "")
     public ModelAndView registerRestaurant(@ModelAttribute("restaurantRegistrationForm") @Valid RestaurantDto restaurantDto) {
+        log.debug("registerRestaurant");
         Restaurant restaurant = restaurantMapper.fromDto(restaurantDto);
 
         try {
