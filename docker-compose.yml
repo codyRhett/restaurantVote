@@ -26,6 +26,7 @@ services:
     image: 'postgres:latest'
     container_name: db
     build: .
+    user: "999:999"
     security_opt:
       - no-new-privileges
     cap_drop:
