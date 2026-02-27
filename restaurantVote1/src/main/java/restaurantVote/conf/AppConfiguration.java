@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import restaurantVote.service.UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -19,9 +18,9 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
     private static final String REGISTER_ENDPOINT = "/api/registration/**";
     private static final String RESTAURANT_ENDPOINT = "/api/restaurant/**";
 
-    @Autowired
-    @Lazy
-    private UserService userService;
+//    @Autowired
+//    @Lazy
+//    private UserService userService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -53,8 +52,8 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/");
     }
 
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-    }
+//    @Autowired
+//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+//    }
 }

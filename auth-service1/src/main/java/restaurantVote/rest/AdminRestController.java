@@ -15,6 +15,7 @@ import restaurantVote.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -61,7 +62,7 @@ public class AdminRestController {
     }
 
     @GetMapping(value = "/user/{id}")
-    public ModelAndView getUserById(@PathVariable(name = "id") Long id) {
+    public ModelAndView getUserById(@PathVariable(name = "id") UUID id) {
         log.debug("getUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
@@ -76,14 +77,14 @@ public class AdminRestController {
     }
 
     @GetMapping(value = "user/delete/{id}")
-    public ModelAndView deleteUserById(@PathVariable(name = "id") Long id) {
+    public ModelAndView deleteUserById(@PathVariable(name = "id") UUID id) {
         log.debug("deleteUserById");
         userService.deleteById(id);
         return new ModelAndView("redirect:/");
     }
 
     @GetMapping(value = "update/user/{id}")
-    public ModelAndView updateUserById(@PathVariable(name = "id") Long id) {
+    public ModelAndView updateUserById(@PathVariable(name = "id") UUID id) {
         log.debug("updateUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
@@ -97,7 +98,7 @@ public class AdminRestController {
 
 
     @DeleteMapping(value = "/user/delete/")
-    public ResponseEntity<Void> deleteById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable(name = "id") UUID id) {
         log.debug("deleteById");
         userService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

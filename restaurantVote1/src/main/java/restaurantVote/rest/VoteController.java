@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import restaurantVote.dto.VoteDto;
+import restaurantVote.mapper.VoteMapper;
+import restaurantVote.model.Vote;
 import restaurantVote.service.RestaurantService;
 import restaurantVote.service.RestaurantVoteService;
 import restaurantVote.service.VoteService;
@@ -52,15 +55,15 @@ public class VoteController {
 //        return ResponseEntity.status(HttpStatus.CREATED).body(voteDto);
 //    }
 
-    @PostMapping(path = "/save")
-    public ModelAndView vote(@ModelAttribute("voteForm") VoteDto voteDto) {
-        // Если пользователь уже проголосовал за ресторан
-        List<Vote> voteList = voteService.findByUserId(voteDto.getUserId());
-        Vote vote = voteMapper.fromDto(voteDto);
-        voteService.save(vote);
-        // Надо обновить общий рейтинг у ресторана
-        Double avgRating = restaurantVoteService.calculateRestaurantAvgRating(voteDto.getRestaurant().getId());
-        restaurantService.updateRating(voteDto.getRestaurant().getId(), avgRating.longValue());
-        return new ModelAndView("redirect:/api/restaurant/list", "voteForm", voteDto);
-    }
+//    @PostMapping(path = "/save")
+//    public ModelAndView vote(@ModelAttribute("voteForm") VoteDto voteDto) {
+//        // Если пользователь уже проголосовал за ресторан
+//        List<Vote> voteList = voteService.findByUserId(voteDto.getUserId());
+//        Vote vote = voteMapper.fromDto(voteDto);
+//        voteService.save(vote);
+//        // Надо обновить общий рейтинг у ресторана
+//        Double avgRating = restaurantVoteService.calculateRestaurantAvgRating(voteDto.getRestaurant().getId());
+//        restaurantService.updateRating(voteDto.getRestaurant().getId(), avgRating.longValue());
+//        return new ModelAndView("redirect:/api/restaurant/list", "voteForm", voteDto);
+//    }
 }

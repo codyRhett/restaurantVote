@@ -6,10 +6,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
 
-    <changeSet id="20220420-845" author="ivanovivan@yandex.ru">
-        <sqlFile dbms="postgresql" path="update/db.1.sql" relativeToChangelogFile="true"/>
-    </changeSet>
-
     <changeSet id="20220420-2" author="ivanovivan@yandex.ru">
         <sqlFile dbms="postgresql" path="update/db.2.sql" relativeToChangelogFile="true"/>
     </changeSet>

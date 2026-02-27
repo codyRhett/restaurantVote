@@ -14,6 +14,7 @@ import javax.persistence.EntityExistsException;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/registration")
@@ -41,7 +42,7 @@ public class RegistrationRestController {
     @PostMapping(path = "/user")
     public ModelAndView registerUser(@ModelAttribute("userForm") @Valid UserDto userDto) {
         User user = userMapper.fromDto(userDto);
-        Role role = roleRepository.findById(2L).orElseThrow();
+        Role role = roleRepository.findByName("ROLE_USER");
         List<Role> roleList = new ArrayList<>();
         roleList.add(role);
         user.setRoles(roleList);

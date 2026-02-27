@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  auth-service:
+    image: 'auth-service'
+    build:
+      context: .
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db1
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db1:5433/authorization
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db1:5433/authorization
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db1:
+    image: 'postgres:latest'
+    container_name: auth-service-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=authorization
+      - PGPORT=5433
+    ports:
+      - "5433:5433"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0.0
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8082:8080"
+    command:
+      - start-dev

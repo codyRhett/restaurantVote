@@ -1,6 +1,8 @@
 package restaurantVote.mapper;
 
 import org.springframework.stereotype.Component;
+import restaurantVote.dto.RestaurantDto;
+import restaurantVote.model.Restaurant;
 
 @Component
 public class RestaurantMapper {

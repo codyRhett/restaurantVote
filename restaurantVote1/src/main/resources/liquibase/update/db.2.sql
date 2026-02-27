@@ -1,3 +1,4 @@
+create sequence if not exists id_seq;
 create table if not exists restaurants
 (
     id bigint default nextval('id_seq'::regclass) not null

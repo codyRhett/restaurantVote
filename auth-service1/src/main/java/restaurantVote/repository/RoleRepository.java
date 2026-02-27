@@ -3,6 +3,8 @@ package restaurantVote.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import restaurantVote.model.Role;
 
-public interface RoleRepository extends JpaRepository<Role, Long> {
+import java.util.UUID;
+
+public interface RoleRepository extends JpaRepository<Role, UUID> {
     Role findByName(String name);
 }

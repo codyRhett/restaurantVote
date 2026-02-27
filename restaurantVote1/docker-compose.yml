@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  app:
+    image: 'restaurant'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db2
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db2:5434/restaurant
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db2:5434/restaurant
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db2:
+    image: 'postgres:latest'
+    container_name: restaurant-service-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=restaurant
+      - PGPORT=5434
+    ports:
+      - "5434:5434"

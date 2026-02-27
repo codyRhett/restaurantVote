@@ -28,9 +28,9 @@ public class Vote {
     @Column(name = "rating")
     private Long rating;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @Column(name = "comment")
     private String comment;

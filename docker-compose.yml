@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+  auth-service:
+    image: 'restaurant'
+    build:
+      context: ./auth-service1
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db1:5433/restaurant
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db1:5433/restaurant
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db1:
+    image: 'postgres:latest'
+    container_name: auth-service-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=authorization
+      - PGPORT=5433
+  app:
+    image: 'restaurant'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db2
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/restaurant
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db:5433/restaurant
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db2:
+    image: 'postgres:latest'
+    container_name: restaurant-service-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=restaurant
+      - PGPORT=5433

@@ -11,7 +11,7 @@
 
 <body>
 <div>
-<form:form action="registration/user" method="POST" modelAttribute="userForm">
+<form:form action="http://auth-service:8080/registration/user" method="POST" modelAttribute="userForm">
     <h2>Регистрация</h2>
     <div>
       <form:input type="text" path="username" placeholder="Username"

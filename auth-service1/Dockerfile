@@ -22,10 +22,9 @@ WORKDIR /app
 ENV LOG_DIR=/app/data/logs
 
 # Копируем файлы с правами
-ARG WAR_FILE=target/restaurantVote-1.0-SNAPSHOT.war
+ARG WAR_FILE=target/auth-service1-2.7.18.war
 # Копирование файлов с назначением владельца и группы
 COPY --chown=appuser:appuser ${WAR_FILE} /app/application.war
-COPY --chown=appuser:appuser src/main/webapp /app/webapp
 
 # Явное переключение пользователя и рабочей директории
 # Используем UID вместо имени. Запуск от имени нового созданного юзера

@@ -14,7 +14,7 @@ public class UserMapper {
         user.setFirstName(userDto.getFirstName());
         user.setLastname(userDto.getLastName());
         user.setEmail(userDto.getEmail());
-        user.setId(userDto.getId());
+//        user.setId(userDto.getId());
 
         if (userDto.getStatus() != null) {
             user.setStatus(userDto.getStatus());

@@ -17,9 +17,9 @@ public class RestaurantVoteList {
     @Column(name = "restaurant_id")
     private Long restaurantId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @Column(name = "name")
     private String name;

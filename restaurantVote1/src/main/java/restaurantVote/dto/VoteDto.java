@@ -18,8 +18,6 @@ public class VoteDto {
     @NotNull
     private Long rating;
 
-    @NotNull
-    private Long userId;
 
     private String comment;
 }

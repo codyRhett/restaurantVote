@@ -8,6 +8,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 public class RestaurantVoteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthApplication.class, args);
+		SpringApplication.run(RestaurantVoteApplication.class, args);
 	}
 }

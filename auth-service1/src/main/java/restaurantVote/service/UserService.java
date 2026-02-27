@@ -20,20 +20,19 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
     private final EntityManager em;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder, EntityManager em) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, EntityManager em) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
         this.em = em;
     }
 
@@ -54,19 +53,19 @@ public class UserService implements UserDetailsService {
         List<Role> roles = new ArrayList<>();
         roles.add(roleUser);
 
-        user.setPasswordConfirm(passwordEncoder.encode(user.getPassword()));
+//        user.setPasswordConfirm(passwordEncoder.encode(user.getPassword()));
         user.setRoles(roles);
         user.setStatus(String.valueOf(Status.ACTIVE));
 
         return userRepository.save(user);
     }
 
-    public Optional<User> findById(Long id) {
+    public Optional<User> findById(UUID id) {
         return userRepository.findById(id);
     }
 
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(UUID id) {
         Query query = em.createNativeQuery("DELETE FROM user_roles WHERE user_roles.user_id = ?");
         query.setParameter(1, id);
         query.executeUpdate();

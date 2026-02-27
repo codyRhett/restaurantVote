@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,7 +39,7 @@ public class UserRestController {
     }
 
     @GetMapping(value = "/{id}")
-    public ModelAndView getUserById(@PathVariable(name = "id") Long id) {
+    public ModelAndView getUserById(@PathVariable(name = "id") UUID id) {
         log.debug("getUserById");
         Optional<User> user = userService.findById(id);
 //        if (user.isEmpty()) {
@@ -53,14 +54,14 @@ public class UserRestController {
     }
 
     @PostMapping(path = "")
-    public ModelAndView updateUser(@ModelAttribute("userForm") @Valid UserDto userDto, @Nullable Long[] roleIds) {
+    public ModelAndView updateUser(@ModelAttribute("userForm") @Valid UserDto userDto, @Nullable UUID[] roleIds) {
         log.debug("updateUser");
         List<Role> roles;
-        if (roleIds != null) {
+        //if (roleIds != null) {
             roles = roleRepository.findAllById(Arrays.asList(roleIds));
-        } else {
-            roles = userService.findById(userDto.getId()).get().getRoles();
-        }
+        //} else {
+//            roles = userService.findById(userDto.getId()).get().getRoles();
+        //}
         userDto.setRoles(roles);
         User user = userMapper.fromDto(userDto);
         try {

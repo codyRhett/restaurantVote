@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import restaurantVote.model.User;
+import restaurantVote.dto.RestaurantDto;
+import restaurantVote.dto.VoteDto;
+import restaurantVote.mapper.RestaurantMapper;
+import restaurantVote.mapper.VoteMapper;
+import restaurantVote.model.Restaurant;
+import restaurantVote.model.Vote;
 import restaurantVote.service.RestaurantService;
-import restaurantVote.service.UserService;
 import restaurantVote.service.VoteService;
 
 import javax.persistence.EntityExistsException;
@@ -28,16 +32,16 @@ public class RestaurantRestController {
 
     private final RestaurantService restaurantService;
     private final RestaurantMapper restaurantMapper;
-    private final UserService userService;
+//    private final UserService userService;
     private final VoteService voteService;
     private final VoteMapper voteMapper;
     private static final Logger log = LoggerFactory.getLogger(
             RestaurantRestController.class);
     @Autowired
-    public RestaurantRestController(RestaurantService restaurantService, RestaurantMapper restaurantMapper, UserService userService, VoteService voteService, VoteMapper voteMapper) {
+    public RestaurantRestController(RestaurantService restaurantService, RestaurantMapper restaurantMapper, VoteService voteService, VoteMapper voteMapper) {
         this.restaurantService = restaurantService;
         this.restaurantMapper = restaurantMapper;
-        this.userService = userService;
+//        this.userService = userService;
         this.voteService = voteService;
         this.voteMapper = voteMapper;
     }
@@ -67,15 +71,16 @@ public class RestaurantRestController {
         RestaurantDto restaurantDto = restaurantMapper.toDto(restaurant);
         mav.addObject("restaurantForm", restaurantDto);
 
-        User user = userService.findByUserName(principal.getName());
+//        User user = userService.findByUserName(principal.getName());
         VoteDto voteDto = new VoteDto();
 
-        Optional<Vote> vote = voteService.findByRestaurantIdandUserId(id, user.getId());
+        Optional<Vote> vote = voteService.findByRestaurantId(id).stream().findAny();
+//        Optional<Vote> vote = voteService.findByRestaurantIdandUserId(id, user.getId());
         if (vote.isPresent()) {
             voteDto = voteMapper.toDto(vote.orElseThrow());
         } else {
             voteDto.setRating(restaurant.getRating());
-            voteDto.setUserId(user.getId());
+//            voteDto.setUserId(user.getId());
             voteDto.setRestaurant(restaurantDto);
 
         }

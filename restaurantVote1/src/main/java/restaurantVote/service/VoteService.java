@@ -2,6 +2,8 @@ package restaurantVote.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import restaurantVote.model.Vote;
+import restaurantVote.repository.VoteRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -26,9 +28,9 @@ public class VoteService {
         return voteRepository.save(vote);
     }
 
-    public List<Vote> findByUserId(Long userId) {
-        return voteRepository.findByUserId(userId);
-    }
+//    public List<Vote> findByUserId(Long userId) {
+//        return voteRepository.findByUserId(userId);
+//    }
 
     public List<Vote> findByRestaurantId(Long restaurantId) {
         return voteRepository.findByRestaurantId(restaurantId);

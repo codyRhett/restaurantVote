@@ -1,6 +1,7 @@
 package restaurantVote.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import restaurantVote.model.RestaurantVoteList;
 
 import java.util.List;
 
