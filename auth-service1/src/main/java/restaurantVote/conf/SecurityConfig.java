@@ -1,5 +1,7 @@
 package restaurantVote.conf;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -9,13 +11,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
+import restaurantVote.rest.UIController;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(jsr250Enabled = true, securedEnabled = true) // Включает поддержку @Secured, @PreAuthorize и @RolesAllowed
 public class SecurityConfig {
 
-
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        http
@@ -27,16 +32,36 @@ public class SecurityConfig {
 //    }
 
 
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        log.info("Конфигурация применена");
         http
                 .authorizeRequests(auth -> auth
                         .antMatchers("/oauth2/**", "/login/**").permitAll()
-                        .antMatchers("/ui/**").authenticated()
+                        .antMatchers("/ui/api/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization/keycloak")
-                        .defaultSuccessUrl("/ui/dashboard", true)
+                        .successHandler((request, response, authentication) -> {
+                            log.info("=== SUCCESS HANDLER ===");
+                            log.info("User: " + authentication.getName());
+
+                            // Проверяем, есть ли сохраненный запрос
+                            SavedRequest savedRequest = new HttpSessionRequestCache().getRequest(request, response);
+                            if (savedRequest != null) {
+                                log.info("Сохраненный URL: " + savedRequest.getRedirectUrl());
+                                log.info("Будет редирект на сохраненный URL");
+                            } else {
+                                log.info("Нет сохраненного URL, редирект на /my-special-dashboard");
+                            }
+
+                            response.sendRedirect("/my-special-dashboard");
+                        })
+                        .failureHandler((request, response, exception) -> {
+                            log.info("Ошибка: " + exception.getMessage());
+                            response.sendRedirect("/login?error");
+                        })
                 );
 
         return http.build();

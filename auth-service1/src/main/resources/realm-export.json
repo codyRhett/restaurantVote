@@ -1,0 +1,33 @@
+{
+  "realm": "Restaurant_authorize",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": true,
+  "attributes": {
+    "frontendUrl": "http://localhost:8082"
+  },
+  "users": [
+    {
+      "username": "myapp",
+      "enabled": true,
+      "serviceAccountClientId": "restaurant_client"
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "restaurant_client",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "XRYUmPtzuXcPq4KLrrr1BA1XJX1klwrK",
+      "redirectUris": ["http://localhost:8080/login/oauth2/code/keycloak"],
+      "webOrigins": ["http://localhost:8080"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "fullScopeAllowed": true,
+      "defaultClientScopes": ["openid", "profile", "email"],
+      "optionalClientScopes": ["address", "phone"]
+    }
+  ]
+}

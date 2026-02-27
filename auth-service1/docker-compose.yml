@@ -29,12 +29,16 @@ services:
       - "5433:5433"
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0.0
+    image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin          # Логин администратора
+      KEYCLOAK_ADMIN_PASSWORD: admin # Пароль администратора
     ports:
       - "8082:8080"
+    volumes:
+      # Монтируем текущую папку с файлом realm-export.json в папку импорта контейнера
+      - ./src/main/resources/realm-export.json:/opt/keycloak/data/import/realm-export.json
     command:
       - start-dev
+      - --import-realm
