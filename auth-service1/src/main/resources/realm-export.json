@@ -8,9 +8,20 @@
   },
   "users": [
     {
-      "username": "myapp",
+      "username": "admin",
       "enabled": true,
-      "serviceAccountClientId": "restaurant_client"
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ADMIN", "offline_access", "uma_authorization"]
     }
   ],
   "clients": [

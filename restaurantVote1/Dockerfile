@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:ubi
+FROM eclipse-temurin:11-jre-ubi9-minimal
 
 # Создаем системного юзера и группу с явным UID/GID
 RUN useradd -r -u 1001 appuser && \

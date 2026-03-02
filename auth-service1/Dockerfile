@@ -25,6 +25,7 @@ ENV LOG_DIR=/app/data/logs
 ARG WAR_FILE=target/auth-service1-2.7.18.war
 # Копирование файлов с назначением владельца и группы
 COPY --chown=appuser:appuser ${WAR_FILE} /app/application.war
+COPY --chown=appuser:appuser src/main/webapp/WEB-INF/jsp/ /app/META-INF/resources/WEB-INF/jsp/
 
 # Явное переключение пользователя и рабочей директории
 # Используем UID вместо имени. Запуск от имени нового созданного юзера
